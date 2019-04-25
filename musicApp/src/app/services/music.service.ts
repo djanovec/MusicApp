@@ -18,6 +18,7 @@ httpOptions: Object;
    }
 }
 getResults(searchTerm){
-this.http.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q${searchTerm}`, this.httpOptions);
+return this.http.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q${searchTerm}`, this.httpOptions);
+console.log(searchTerm);
 }
 };
