@@ -13,6 +13,7 @@ import { MaterialModule } from './material-module';
 import { SortPipe } from './pipes/sort.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HeaderComponent } from './header/header.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,15 @@ import { HeaderComponent } from './header/header.component';
     SearchMusicComponent,
     SortPipe,
     FilterPipe,
-    HeaderComponent
+    HeaderComponent,
+    ReactiveFormsModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
