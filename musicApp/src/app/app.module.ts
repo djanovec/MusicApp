@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -13,6 +12,12 @@ import { MaterialModule } from './material-module';
 import { SortPipe } from './pipes/sort.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HeaderComponent } from './header/header.component';
+import { ResultsComponent } from './results/results.component';
+import { MatPaginatorModule, MatInputModule, MatFormFieldModule, 
+  MatTableModule, MatSortModule, MatProgressSpinnerModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -24,13 +29,22 @@ import { HeaderComponent } from './header/header.component';
     SearchMusicComponent,
     SortPipe,
     FilterPipe,
-    HeaderComponent
+    HeaderComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    HttpClientModule,
+    FormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
