@@ -4,7 +4,7 @@ import { MusicService } from '../services/music.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { DataSource } from '@angular/cdk/table';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator, MatTableDataSource} from '@angular/material';
 // import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 
 @Component({
@@ -16,6 +16,7 @@ import { MatPaginator } from '@angular/material';
 export class ResultsComponent implements OnInit {
   result: Object[] = [];
   displayedColumns: string[] = ['title', 'artist', 'preview']
+  dataSource = new MatTableDataSource
   @ViewChild(MatPaginator) paginator: MatPaginator;
   // resultData: any = {
   //   thead: ['Title', 'Artist', 'Preview'],
@@ -33,7 +34,7 @@ constructor(private results: MusicService) {}
 
 
   ngOnInit() {
-    
+    this.dataSource.paginator = this.paginator
   }
 }
 
