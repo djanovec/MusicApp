@@ -16,18 +16,18 @@
    {{res.album.title}}
 </div> -->
 
-<mat-table [dataSource]="results" *ngFor="let res of results">
+<mat-table [dataSource]="results">
    <ng-container matColumnDef="title">
        <mat-header-cell *matHeaderCellDef>Song Title</mat-header-cell>
-       <mat-cell *matCellDef="let result">{{res.title}}</mat-cell>
+       <mat-cell *matCellDef="let result">{{result.title}}</mat-cell>
    </ng-container> 
    <ng-container matColumnDef="artist">
        <mat-header-cell *matHeaderCellDef>Artist</mat-header-cell>
-       <mat-cell *matCellDef="let result">{{res.artist.name}}</mat-cell>
+       <mat-cell *matCellDef="let result">{{result.artist.name}}</mat-cell>
    </ng-container>  
    <ng-container matColumnDef="preview">
        <mat-header-cell *matHeaderCellDef>Play Song</mat-header-cell>
-       <mat-cell *matCellDef="let result"><a href="{{res.preview}}" target="_blank">{{res.title}}</a></mat-cell>
+       <mat-cell *matCellDef="let result"><a href="{{result.preview}}" target="_blank">{{result.title}}</a></mat-cell>
    </ng-container>   
    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>   
    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>    
