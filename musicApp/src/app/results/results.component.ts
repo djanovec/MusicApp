@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
 import { MusicService } from '../services/music.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { DataSource } from '@angular/cdk/table';
+import { MatPaginator } from '@angular/material';
 // import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 
 @Component({
@@ -15,6 +16,7 @@ import { DataSource } from '@angular/cdk/table';
 export class ResultsComponent implements OnInit {
   result: Object[] = [];
   displayedColumns: string[] = ['title', 'artist', 'preview']
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   // resultData: any = {
   //   thead: ['Title', 'Artist', 'Preview'],
   //   displayedColumns: ['data.title', 'data.artist.name', 'data.preview']
