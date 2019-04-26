@@ -1,17 +1,35 @@
 <input type = "text" id = "searchTerm" placeholder="Search">
 <br>
-<form>
+<!-- <form>
  <label for="artist">Artist</label>
  <input type="radio" id="artist" name="searchBar">
  <label for="song">Song</label>
  <input type="radio" id="song" name="searchBar">
  <label for="album">Album</label>
  <input type="radio" id="album" name="searchBar">
-</form>
+</form> -->
  <!-- <input type=“submit” value=“Submit”> -->
 
-<div *ngFor="let res of results">
+<!-- <div *ngFor="let res of results">
    {{res.artist.name}}
    {{res.title}}
    {{res.album.title}}
-</div>
+</div> -->
+
+<mat-table [dataSource]="results" *ngFor="let res of results">
+   <ng-container matColumnDef="title">
+       <mat-header-cell *matHeaderCellDef>Song Title</mat-header-cell>
+       <mat-cell *matCellDef="let result">{{res.title}}</mat-cell>
+   </ng-container> 
+   <ng-container matColumnDef="artist">
+       <mat-header-cell *matHeaderCellDef>Artist</mat-header-cell>
+       <mat-cell *matCellDef="let result">{{res.artist.name}}</mat-cell>
+   </ng-container>  
+   <ng-container matColumnDef="preview">
+       <mat-header-cell *matHeaderCellDef>Play Song</mat-header-cell>
+       <mat-cell *matCellDef="let result"><a href="{{res.preview}}" target="_blank">{{res.title}}</a></mat-cell>
+   </ng-container>   
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>   
+   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>    
+</mat-table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

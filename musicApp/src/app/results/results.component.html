@@ -1,0 +1,28 @@
+<div class="container">
+  <div>
+    <h1>Results</h1>
+  </div>
+
+  <mat-table [dataSource]="result" >
+      <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef>Song Title</mat-header-cell>
+          <mat-cell *matCellDef="let result">{{results.title}}</mat-cell>
+      </ng-container> 
+      <ng-container matColumnDef="artist">
+          <mat-header-cell *matHeaderCellDef>Artist</mat-header-cell>
+          <mat-cell *matCellDef="let result">{{results.artist.name}}</mat-cell>
+      </ng-container>  
+      <ng-container matColumnDef="preview">
+          <mat-header-cell *matHeaderCellDef>Play Song</mat-header-cell>
+          <mat-cell *matCellDef="let result"><a href="{{results.preview}}" target="_blank">{{result.title}}</a></mat-cell>
+      </ng-container>   
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>   
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>    
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+<!-- <button (click)="getResult()">Click</button> -->
+
+
+

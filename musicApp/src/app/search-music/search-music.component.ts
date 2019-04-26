@@ -13,6 +13,7 @@ export class SearchMusicComponent implements OnInit {
   results: Object[]=[];
   inputObs: Observable<any>
   inputElement: any;
+  displayedColumns: string[] = ['title', 'artist', 'preview']
   
   constructor(private musicService: MusicService) { 
   

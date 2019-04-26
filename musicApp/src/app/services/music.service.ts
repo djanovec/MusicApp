@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ httpOptions: Object;
    }
 }
 getResults(searchTerm){
-return this.http.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q${searchTerm}`, this.httpOptions);
+return this.http.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchTerm}`, this.httpOptions);
 console.log(searchTerm);
 }
 };
