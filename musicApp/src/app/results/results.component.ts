@@ -13,17 +13,25 @@ import { DataSource } from '@angular/cdk/table';
 })
 
 export class ResultsComponent implements OnInit {
-  result: any = [];
-  resultData: any = {
-    thead: ['Title', 'Artist', 'Preview'],
-    displayedColumns: ['data.title', 'data.artist.name', 'data.preview']
-  };
+  result: Object[] = [];
+  displayedColumns: string[] = ['title', 'artist', 'preview']
+  // resultData: any = {
+  //   thead: ['Title', 'Artist', 'Preview'],
+  //   displayedColumns: ['data.title', 'data.artist.name', 'data.preview']
+  // };
+
+
 constructor(private results: MusicService) {}
   getResult() {
     this.results.getResults().subscribe(response => this.result = response['data']);
     this.results.getResults().subscribe(response => console.log(response));
+    console.log(this.result);
+    
 }
+
+
   ngOnInit() {
+    
   }
 }
 
