@@ -18,6 +18,7 @@ import { MatPaginatorModule, MatInputModule, MatFormFieldModule,
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     SortPipe,
     FilterPipe,
     HeaderComponent,
-    ResultsComponent
+    ResultsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
