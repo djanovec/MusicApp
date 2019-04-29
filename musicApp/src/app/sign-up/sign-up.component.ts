@@ -1,26 +1,13 @@
-// import { Component, OnInit } from '@angular/core';
 
-// @Component({
-//   selector: 'app-sign-up',
-//   templateUrl: './sign-up.component.html',
-//   styleUrls: ['./sign-up.component.scss']
-// })
-// export class SignUpComponent implements OnInit {
-  
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-
+// Version 1
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AlertService, UserService } from;
+import { AlertService } from '../services/alert.service';
+import { UserService } from '../services/user.service';
+
 
 
 @Component({
@@ -32,9 +19,9 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   loading = false;
   submitted = false;
-  constructor(private formBuilder: FormBuilder, private router: Router,) { }
-  // private userService: UserService,
-  //       private alertService: AlertService
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService,
+  private alertService: AlertService) { }
+ 
   ngOnInit() {
       this.signUpForm = this.formBuilder.group({
         firstName: ['', Validators.required],
@@ -68,3 +55,36 @@ export class SignUpComponent implements OnInit {
               });
   }
 }
+
+// version 2
+
+// import { Component } from '@angular/core';
+// import {Signup} from './signup';
+ 
+// @Component({
+//   selector: 'app-root',
+//   templateUrl: './signup.component.html',
+//   styleUrls: ['./signup.component.css']
+// })
+// export class SignupComponent {
+//   title = '';
+//   passwordConfirmationFailed = false;
+//   passwordConfirmationTxt = '';
+ 
+//   signup = new Signup('', '', '', '');
+ 
+//   countries = ['india', 'canada', 'us'];
+ 
+//   confirmPassword() {
+//     if (this.signup.password === this.passwordConfirmationTxt) {
+//       this.passwordConfirmationFailed = false;
+//     } else {
+//       this.passwordConfirmationFailed = true;
+//     }
+//   }
+ 
+//   onSubmit() {
+//     console.log('Name: ' + this.signup.name + ', Email: ' + this.signup.email + ', Password: ' + this.signup.password );
+//   }
+ 
+// }

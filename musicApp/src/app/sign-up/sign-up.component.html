@@ -1,26 +1,4 @@
-<!-- <form>
-<div>
-<label for="name">Name</label>
-<input type="text" placeholder="" id="name">
-</div>
-
-<div>
-<label for="email">Email</label>
-<input type="text" placeholder="" id="email">
-
-<div>
-<label for="password">Password</label>
-<input type="text" placeholder="" id="password">
-
-
-<div>
-<label for="confirm">Confirm Password</label>
-<input type="text" placeholder="" id="confirm">
-
-<button>Submit</button>
-
-</form> -->
-
+<!-- Version 1 -->
 <h2>Sign Up</h2>
 <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
   <div>
@@ -61,3 +39,42 @@
     <a [routerLink]="['/home']" class="btn btn-link">Cancel</a>
   </div>
 </form>
+
+
+<!-- Version 2 -->
+
+<!-- <div style="margin-top: 20px">
+<h2>New User? Signup</h2>
+  <hr/>
+</div>
+<div style="margin-top: 30pt">
+<form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+<div class="form-group">
+      <label for="emailField"><strong>Email address</strong></label>
+      <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required placeholder="name@example.com" name="uEmail" #email="ngModel"/>
+    </div>
+<div [hidden]="email.valid || email.pristine" class="alert alert-danger">Email address is required</div>
+<div class="form-group">
+      <label for="password"><strong>Password</strong></label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="signup.password" name="password" (blur)="confirmPassword()" required placeholder="Password" #pswd="ngModel"/>
+    </div>
+<div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger">Password is required</div>
+<div class="form-group">
+      <label for="cnfpassword"><strong>Confirm Password</strong></label>
+      <input type="password" class="form-control" id="cnfpassword" [(ngModel)]="passwordConfirmationTxt" (blur)="confirmPassword()" name="passwordConfirmationTxt"/>
+    </div>
+<div [hidden]="!passwordConfirmationFailed" class="alert alert-danger">Password did not match</div>
+<div class="form-group">
+      <label for="fullname"><strong>Name</strong></label>
+      <input class="form-control" id="fullname" [(ngModel)]="signup.name" placeholder="Full Name" required name="uName" #fullname="ngModel"/>
+    </div>
+<div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">Name is required</div>
+<div class="form-group">
+      <label for="country"><strong>Country</strong></label>
+      <select class="form-control" id="country" required>
+<option *ngFor="let country of countries" [value]="country">{{country}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button>
+  </form>
+</div> -->

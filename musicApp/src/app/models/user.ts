@@ -5,3 +5,13 @@ export class User {
     firstName: string;
     lastName: string;
 }
+
+// version 2
+
+// export class Signup {
+//     constructor (
+//       public email: string,
+//       public name: string,
+//       public password: string,
+//     ) {  }
+//   }
