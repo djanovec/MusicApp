@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { FooterComponent } from './footer/footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { FooterComponent } from './footer/footer.component';
     FilterPipe,
     HeaderComponent,
     ResultsComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { FooterComponent } from './footer/footer.component';
     MatSortModule,
     HttpClientModule,
     FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
