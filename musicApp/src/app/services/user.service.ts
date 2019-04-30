@@ -4,7 +4,9 @@ import { User } from '../models/user';
 import { config } from 'rxjs';
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class UserService {
     constructor(private http: HttpClient) { }
 
@@ -16,7 +18,8 @@ export class UserService {
         return this.http.get(`/users/` + id);
     }
     register(user: User) {
-        return this.http.post(`${config.apiUrl}/users/register`, user);
+        // return this.http.post(`${config.apiUrl}/users/register`, user);
+        return this.http.post(`/users/register`, user);
     }
 
     signUp(user: User) {

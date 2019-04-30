@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
   <div>
     <h1>Results</h1>
   </div>
@@ -16,7 +16,7 @@
           <mat-header-cell *matHeaderCellDef>Play Song</mat-header-cell>
           <mat-cell *matCellDef="let result">
               <audio controls><source src="{{result.preview}}" /></audio>
-              <!-- <a href="{{result.preview}}" target="_blank">{{result.title}}</a> -->
+               <a href="{{result.preview}}" target="_blank">{{result.title}}</a>
               </mat-cell>
       </ng-container>   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>   
