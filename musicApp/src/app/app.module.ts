@@ -19,7 +19,6 @@ import { FormsModule } from '@angular/forms';
 
 import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginGuard } from './logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -50,7 +49,7 @@ import { LoginGuard } from './logged-in.guard';
     MatProgressSpinnerModule,
     ReactiveFormsModule
   ],
-  providers: [LoginGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
