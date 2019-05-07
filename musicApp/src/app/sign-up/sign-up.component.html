@@ -1,7 +1,36 @@
 <app-header></app-header>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="4">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+        <td><mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
+        </mat-form-field></td>
+      </tr></table>
+    </form>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="login()" color="primary">Login</button>
+    <!-- <button mat-button [routerlink]="['/home']">Home</button> -->
+
+  </mat-card-actions>
+</mat-card>
+
 <!-- Version 1 -->
 
-<h2>Sign Up</h2>
+<!-- <h2>Sign Up</h2>
 <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="firstName">First Name</label>
@@ -41,7 +70,7 @@
     <a [routerLink]="['/home']" class="btn btn-link">Back to Home</a>
   </div>
 
-</form>
+</form> -->
 
 
 <app-footer></app-footer>
@@ -83,3 +112,4 @@
     <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button>
   </form>
 </div> -->
+
