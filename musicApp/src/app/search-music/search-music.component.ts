@@ -10,36 +10,25 @@ import { map, filter, debounceTime, distinctUntilChanged} from 'rxjs/operators';
   styleUrls: ['./search-music.component.scss']
 })
 export class SearchMusicComponent implements OnInit {
-  results: Object[]=[];
-  inputObs: Observable<any>
+  results: Object[] = [];
+  inputObs: Observable<any>;
   inputElement: any;
-  displayedColumns: string[] = ['title', 'artist', 'preview']
-  
-  constructor(private musicService: MusicService) { 
-  
-      
-   }
- 
+  displayedColumns: string[] = ['title', 'artist', 'preview'];
 
+  constructor(private musicService: MusicService) {}
   ngOnInit() {
   this.inputElement = document.getElementById("searchTerm");
-  console.log(this.inputElement);
   this.inputObs = fromEvent(this.inputElement, 'input').pipe(map(e => e['target'].value),
   filter (text => text.length > 3),
   debounceTime(400),
-  distinctUntilChanged()
-  )
- 
-this.inputObs.subscribe(searchTerm =>{
-  this.musicService.getResults(searchTerm).subscribe(res =>{
-    this.results = res['data']
-    console.log(res);
-  })
-  console.log(searchTerm);})
-  
+  distinctUntilChanged());
 
-  } 
-
+  this.inputObs.subscribe(searchTerm => {
+  this.musicService.getResults(searchTerm).subscribe(res => {
+    this.results = res['data'];
+  });
+  });
+  }
 }
- 
-//Observable
+
+// Observable
