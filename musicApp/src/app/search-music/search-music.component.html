@@ -1,21 +1,5 @@
 <input type = "text" id = "searchTerm" placeholder="Search">
 <br>
-<!-- <form>
- <label for="artist">Artist</label>
- <input type="radio" id="artist" name="searchBar">
- <label for="song">Song</label>
- <input type="radio" id="song" name="searchBar">
- <label for="album">Album</label>
- <input type="radio" id="album" name="searchBar">
-</form> -->
- <!-- <input type=“submit” value=“Submit”> -->
-
-<!-- <div *ngFor="let res of results">
-   {{res.artist.name}}
-   {{res.title}}
-   {{res.album.title}}
-</div> -->
-
 <mat-table [dataSource]="results">
    <ng-container matColumnDef="title">
        <mat-header-cell *matHeaderCellDef>Song Title</mat-header-cell>
@@ -27,9 +11,13 @@
    </ng-container>  
    <ng-container matColumnDef="preview">
        <mat-header-cell *matHeaderCellDef>Play Song</mat-header-cell>
-       <mat-cell *matCellDef="let result"><a href="{{result.preview}}" target="_blank">{{result.title}}</a></mat-cell>
+       <mat-cell *matCellDef="let result"><audio controls><source src="{{result.preview}}" /></audio></mat-cell>
    </ng-container>   
    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>   
    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>    
 </mat-table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<mat-paginator [length] = "results.length"
+   [pageSize] = "10"
+   [pageSizeOptions] = "[5, 10, 25, 100]"
+   (page) = "results = $event">
+</mat-paginator>
