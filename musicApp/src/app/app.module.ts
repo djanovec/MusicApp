@@ -12,7 +12,6 @@ import { MaterialModule } from './material-module';
 import { SortPipe } from './pipes/sort.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HeaderComponent } from './header/header.component';
-import { ResultsComponent } from './results/results.component';
 import { MatPaginatorModule, MatInputModule, MatFormFieldModule, 
   MatTableModule, MatSortModule, MatProgressSpinnerModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,7 +19,6 @@ import { FormsModule } from '@angular/forms';
 
 import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginGuard } from './logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -33,10 +31,8 @@ import { LoginGuard } from './logged-in.guard';
     SortPipe,
     FilterPipe,
     HeaderComponent,
-    ResultsComponent,
     FooterComponent,
     HeaderComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -53,7 +49,7 @@ import { LoginGuard } from './logged-in.guard';
     MatProgressSpinnerModule,
     ReactiveFormsModule
   ],
-  providers: [LoginGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

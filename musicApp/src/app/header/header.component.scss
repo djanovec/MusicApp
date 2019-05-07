@@ -1,2 +1,15 @@
-
+.flex{
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+*{
+color: white;
+text-decoration: none;
+text-align: center;
+}
+.active{
+color: #69F0AE;
+text-decoration: none;
+}
 
