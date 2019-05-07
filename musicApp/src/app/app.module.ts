@@ -12,7 +12,6 @@ import { MaterialModule } from './material-module';
 import { SortPipe } from './pipes/sort.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HeaderComponent } from './header/header.component';
-import { ResultsComponent } from './results/results.component';
 import { MatPaginatorModule, MatInputModule, MatFormFieldModule, 
   MatTableModule, MatSortModule, MatProgressSpinnerModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,10 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SortPipe,
     FilterPipe,
     HeaderComponent,
-    ResultsComponent,
     FooterComponent,
     HeaderComponent
-    
   ],
   imports: [
     BrowserModule,
