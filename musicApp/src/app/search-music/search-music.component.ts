@@ -17,16 +17,17 @@ export class SearchMusicComponent implements OnInit {
   length = 1;
   searchTerm = '';
   apiIndex = 0;
-  pageIndex = 1;
-  indexItterator: number;
+  pageIndex = 0;
+  indexItterator: Object [] = [];
   nextButton = document.getElementById("nextButton");
   prevButton = document.getElementById("prevButton");
 constructor(private musicService: MusicService) {}
 addIndex(pageIndex) {
   if (pageIndex < this.length) {
-    this.indexItterator = pageIndex + 1;
-    this.apiIndex = this.indexItterator * 25;
-    this.indexItterator = pageIndex;
+    this.indexItterator.push({pageIndex});
+    this.apiIndex = this.indexItterator.length * 25;
+    pageIndex ++;
+    pageIndex = this.pageIndex;
     console.log(this.apiIndex);
   }
   else {
@@ -41,9 +42,11 @@ addIndex(pageIndex) {
 }
 subIndex(pageIndex) {
   if (pageIndex > 0) {
-        pageIndex = pageIndex - 1;
-        this.apiIndex = pageIndex * 25;
-        console.log(this.apiIndex);
+    this.indexItterator.pop();
+    this.apiIndex = this.indexItterator.length * 25;
+    pageIndex --;
+    pageIndex = this.pageIndex;
+    console.log(this.apiIndex);
       }
       else {
         console.log("didn't work");
@@ -72,39 +75,3 @@ ngOnInit() {
   });
 }
 }
-
-// Work in progress 
-// addIndex(pageIndex) {
-//   if (this.pageIndex < this.length) {
-//     this.indexItterator.push({pageIndex});
-//     console.log(this.apiIndex);
-//   }
-//   else {
-//     console.log("didn't work");
-//     console.log(this.pageIndex);
-//     console.log(this.length);
-//   }
-//   this.musicService.getResults(this.searchTerm, this.apiIndex).subscribe(res => {
-//     this.results = res['data'];
-//     this.length = res['total'];
-//     console.log(this.searchTerm);
-//     console.log(this.apiIndex);
-//   });
-// }
-// subIndex(pageIndex) {
-//   if (this.pageIndex > 0) {
-//     this.indexItterator.pop();
-//     console.log(this.apiIndex);
-//       }
-//       else {
-//         console.log("didn't work");
-//         console.log(this.pageIndex);
-//         console.log(this.length);
-//       }
-//   this.musicService.getResults(this.searchTerm, this.apiIndex).subscribe(res => {
-//     this.results = res['data'];
-//     this.length = res['total'];
-//     console.log(this.searchTerm);
-//     console.log(this.apiIndex);
-//   });
-// }
