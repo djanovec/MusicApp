@@ -18,8 +18,9 @@ export class RestService {
       }
         // clear alert message on route change
         getUsers(): Observable<any> {
-            return this.http.get(endpoint + 'users').pipe(
-              map(this.extractData));
+            return this.http.get(endpoint + 'users')
+            // .pipe(
+            //   map(this.extractData));
           }
           
           getUser(id): Observable<any> {

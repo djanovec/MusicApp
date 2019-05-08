@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RestService} from '../services/rest.service'
 import { ActivatedRoute, Router } from '@angular/router';
+import {DataSource, getMultipleValuesInSingleSelectionError} from '@angular/cdk/collections';
+import { MatPaginator, PageEvent} from '@angular/material';
 
 @Component({
   selector: 'app-user-list',
@@ -8,8 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-
-  users:any = [];
+  users:Array<Object>;
+  usersString: string = "";
+  dataSource = this.usersString;
+  displayedColumns: string[] = ['ID', 'Name', 'Username' , 'Email']
+ 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
 
   constructor(public rest:RestService, private route: ActivatedRoute, private router: Router) { }
 
@@ -18,11 +30,13 @@ export class UserListComponent implements OnInit {
   }
 
   getUsers() {
-    this.users = [];
-    this.rest.getUsers().subscribe((data: {}) => {
+
+    this.rest.getUsers().subscribe((data: Array<Object>) => {
       console.log(data);
       this.users = data;
+      this.usersString = JSON.stringify(this.users)
     });
+    // console.log(this.dataSource);
   }
 
 
