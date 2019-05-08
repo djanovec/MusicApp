@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MusicService } from '../services/music.service';
 import { Observable, fromEvent} from 'rxjs';
 import { map, filter, debounceTime, distinctUntilChanged} from 'rxjs/operators';
-
+import {PageEvent} from '@angular/material';
 
 @Component({
   selector: 'app-search-music',
@@ -12,11 +12,27 @@ import { map, filter, debounceTime, distinctUntilChanged} from 'rxjs/operators';
 export class SearchMusicComponent implements OnInit {
   results: Object[] = [];
   inputObs: Observable<any>;
+  indexObs: Observable<any>;
   inputElement: any;
   displayedColumns: string[] = ['title', 'artist', 'preview'];
+  pageSize = 25;
+  length = 100;
+  pageEvent: PageEvent;
+  pageIndex = 0;
+constructor(private musicService: MusicService) {
 
-  constructor(private musicService: MusicService) {}
-  ngOnInit() {
+  function newIndex() {
+    if(this.pageEvent){
+      this.pageIndex = (this.pageIndex * 25);
+      this.musicService.getResults(this.searchTerm, this.pageIndex).subscribe(res => {
+        this.results = res['data'];
+        this.length = res['total'];
+      })
+    }
+  }
+}
+
+ngOnInit() {
   this.inputElement = document.getElementById("searchTerm");
   this.inputObs = fromEvent(this.inputElement, 'input').pipe(map(e => e['target'].value),
   filter (text => text.length > 3),
@@ -24,11 +40,10 @@ export class SearchMusicComponent implements OnInit {
   distinctUntilChanged());
 
   this.inputObs.subscribe(searchTerm => {
-  this.musicService.getResults(searchTerm).subscribe(res => {
+  this.musicService.getResults(searchTerm, this.pageIndex).subscribe(res => {
     this.results = res['data'];
+    this.length = res['total'];
   });
   });
   }
 }
-
-// Observable

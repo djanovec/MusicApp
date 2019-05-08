@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root'
 })
-//API Call for search bar
 export class MusicService {
 httpOptions: Object;
   constructor(private http: HttpClient) {
-
     this.httpOptions = {
       headers: new HttpHeaders({
         'X-RapidAPI-Host':  'deezerdevs-deezer.p.rapidapi.com',
@@ -17,9 +14,7 @@ httpOptions: Object;
     })
    }
 }
-getResults(searchTerm){
-return this.http.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchTerm}`, this.httpOptions);
+getResults(searchTerm, pageIndex) {
+return this.http.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchTerm}&index=${pageIndex}`, this.httpOptions);
 }
 }
-
-//API Call needed
