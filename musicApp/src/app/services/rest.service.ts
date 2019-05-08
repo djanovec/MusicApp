@@ -18,7 +18,7 @@ export class RestService {
       }
         // clear alert message on route change
         getUsers(): Observable<any> {
-            return this.http.get(endpoint + 'user').pipe(
+            return this.http.get(endpoint + 'users').pipe(
               map(this.extractData));
           }
           
@@ -55,7 +55,7 @@ export class RestService {
           }
         
     }
-const endpoint = `http://localhost:3000/api/${searchterm}`;
+const endpoint = `https://jsonplaceholder.typicode.com/`;
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
