@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="matCard">
         <mat-card-header>
             <mat-card-title>What's your jam?</mat-card-title>
         </mat-card-header>
@@ -9,7 +9,7 @@
         </mat-card-content>
     </mat-card>
 <br>
-<mat-table [dataSource]="results">
+<mat-table class="matTable" [dataSource]="results">
    <ng-container matColumnDef="title">
        <mat-header-cell *matHeaderCellDef>Song Title</mat-header-cell>
        <mat-cell *matCellDef="let result">{{result.title}}</mat-cell>
@@ -25,7 +25,7 @@
    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>   
    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>    
 </mat-table>
-<mat-paginator [length] = "results.length"
+<mat-paginator class="matTable" [length] = "results.length"
    [pageSize] = "10"
    [pageSizeOptions] = "[5, 10, 25, 100]"
    (page) = "results = $event">
