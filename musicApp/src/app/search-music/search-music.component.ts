@@ -16,21 +16,17 @@ export class SearchMusicComponent implements OnInit {
   inputElement: any;
   displayedColumns: string[] = ['title', 'artist', 'preview'];
   pageSize = 25;
-  length = 100;
-  pageEvent: PageEvent;
-  pageIndex = 0;
-constructor(private musicService: MusicService) {
+  length = 0;
+  searchTerm = '';
 
-  function newIndex() {
-    if(this.pageEvent){
-      this.pageIndex = (this.pageIndex * 25);
-      this.musicService.getResults(this.searchTerm, this.pageIndex).subscribe(res => {
-        this.results = res['data'];
-        this.length = res['total'];
-      })
-    }
-  }
+constructor(private musicService: MusicService) {}
+newIndex(event) {
+  this.musicService.getResults(this.searchTerm, event.pageIndex).subscribe(res => {
+    this.results = res['data'];
+    this.length = res['total'];
+  });
 }
+
 
 ngOnInit() {
   this.inputElement = document.getElementById("searchTerm");
@@ -40,10 +36,20 @@ ngOnInit() {
   distinctUntilChanged());
 
   this.inputObs.subscribe(searchTerm => {
-  this.musicService.getResults(searchTerm, this.pageIndex).subscribe(res => {
+  this.musicService.getResults(searchTerm, 0).subscribe(res => {
     this.results = res['data'];
     this.length = res['total'];
+    return searchTerm;
   });
+
+  // this.indexObs.subscribe(pageEvent =>{
+  //   this.musicService.getResults(this.searchTerm, this.pageIndex).subscribe(res => {
+  //     this.pageIndex = pageEvent['index'];
+  //     this.pageIndex = this.pageIndex * 25;
+  //     this.results = res['data'];
+  //     this.length = res['total'];
+  // });
+    // });
   });
   }
 }

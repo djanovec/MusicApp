@@ -18,6 +18,5 @@
 </mat-table>
 <mat-paginator [length] = "length"
    [pageSize] = "25"
-   (page) = "pageEvent = $event"
-   (page) = "newIndex()">
+   (page) = "newIndex($event)">
 </mat-paginator>
