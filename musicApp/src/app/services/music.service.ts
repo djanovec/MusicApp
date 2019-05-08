@@ -14,7 +14,7 @@ httpOptions: Object;
     })
    }
 }
-getResults(searchTerm, pageIndex) {
-return this.http.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchTerm}&index=${pageIndex}`, this.httpOptions);
+getResults(searchTerm, apiIndex) {
+return this.http.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchTerm}&index=${apiIndex}`, this.httpOptions);
 }
 }
