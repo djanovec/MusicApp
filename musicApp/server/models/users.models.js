@@ -35,7 +35,7 @@ function login(req, res){
             return res.send({error: "Invalid Username or Password!"});
         }
     }
-        return res.send({error: "Invalid Username or Password!"});
+        return res.send({error: "Something Went Wrong!"});
     })
 }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {RestService} from '../services/rest.service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -10,19 +10,32 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-  constructor(private router: Router, private restService: RestService) { }
-  email: string;
-  password: string;
-  loginUser: {};
+  submitted = false;
+  public loginUser = {};
+  public value = '';
   signInForm: FormGroup;
+
+  constructor(private router: Router, private restService: RestService, private formBuilder: FormBuilder) { }
+
   ngOnInit() {
   }
 
-  OnSubmit(){
-    this.restService.userLogin(this.loginUser).subscribe
+  onSubmit(){
     console.log(this.loginUser);
+    this.submitted = true;
+    this.restService.userLogin(this.loginUser).subscribe(res => {;
+      if(res["message"]){
+        console.log("this works")
+      }
+      else{
+        console.log("error returned")
+      }
+    })
 
-  }
+    }
+    // console.log(this.loginUser);
+
+  
   // login(): void {
   //   if (this.email == req.body.email && this.password == req.body.password) {
   //     this.router.navigate(["user"]);
@@ -30,4 +43,4 @@ export class SignInComponent implements OnInit {
   //     alert("Invalid credentials");
   //   }
   // }
-}
+  }
