@@ -40,7 +40,7 @@ function login(req, res){
 }
 
 function getAll(req, res){
-    pool.query("SELECT id, email FROM USERS", (err, result)=>{
+    pool.query("SELECT id, email, firstName, lastName FROM USERS", (err, result)=>{
         res.send({
             error: err,
             users: result

@@ -9,9 +9,8 @@ const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'user', component: UserPageComponent},
   {path: 'sign-up', component: SignUpComponent},
-  {path: 'admin', component: UserListComponent}
-  // {path: '**', redirectTo: 'home', pathMatch: 'full'},
-  // {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'admin', component: UserListComponent},
+  {path: '**', redirectTo: 'home', pathMatch: 'full'}
  
 ];
 

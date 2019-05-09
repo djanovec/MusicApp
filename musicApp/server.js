@@ -6,14 +6,14 @@ const userRoutes = require("./server/routes/users.routes");
 
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname+"/dist"));
+app.use(express.static(__dirname+"/dist/musicApp"));
 
 
 
 app.use('/users', userRoutes);
 
 app.get('/', (req, res)=>{
-    res.sendFile(__dirname+"/dist/index.html");
+    res.sendFile(__dirname+"/dist/musicApp/index.html");
 })
 
 

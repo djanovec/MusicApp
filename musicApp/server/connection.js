@@ -4,7 +4,8 @@ let pool = mysql.createPool({
     host: "localhost",
     user: "codeJamAdmin",
     password: "Admin",
-    database: "codeJam"
+    database: "codeJam",
+    port: 8889
 })
 
 module.exports.pool = pool;

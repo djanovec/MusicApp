@@ -13,7 +13,7 @@ export class UserListComponent implements OnInit {
   users:Array<Object>;
   usersString: string = "";
   dataSource = this.usersString;
-  displayedColumns: string[] = ['Delete','ID', 'Name', 'Username' , 'Email']
+  displayedColumns: string[] = ['Delete','ID', 'First Name', 'Last Name' , 'Email']
  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   length = 100;
@@ -31,9 +31,9 @@ export class UserListComponent implements OnInit {
 
   getUsers() {
 
-    this.rest.getUsers().subscribe((data: Array<Object>) => {
+    this.rest.getUsers().subscribe((data: Object) => {
       console.log(data);
-      this.users = data;
+      this.users = data["users"];
       this.usersString = JSON.stringify(this.users)
     });
     // console.log(this.dataSource);

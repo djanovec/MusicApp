@@ -18,25 +18,25 @@ export class RestService {
       }
         // clear alert message on route change
         getUsers(): Observable<any> {
-            return this.http.get(endpoint + 'users')
+            return this.http.get('/users/all')
             // .pipe(
             //   map(this.extractData));
           }
           
           getUser(id): Observable<any> {
-            return this.http.get(endpoint + 'user/userId' + id).pipe(
+            return this.http.get('users/userId' + id).pipe(
               map(this.extractData));
           }
           
           updateUser (id, user): Observable<any> {
-            return this.http.put(endpoint + 'user/' + id, JSON.stringify(user), httpOptions).pipe(
+            return this.http.put('users/' + id, JSON.stringify(user), httpOptions).pipe(
               tap(_ => console.log(`updated user id=${id}`)),
               catchError(this.handleError<any>('updateUser'))
             );
           }
           
           deleteUser (id): Observable<any> {
-            return this.http.delete<any>(endpoint + 'user/' + id, httpOptions).pipe(
+            return this.http.delete<any>('users/' + id, httpOptions).pipe(
               tap(_ => console.log(`deleted user id=${id}`)),
               catchError(this.handleError<any>('deleteUser'))
             );
@@ -56,7 +56,7 @@ export class RestService {
           }
         
     }
-const endpoint = `https://jsonplaceholder.typicode.com/`;
+const endpoint = `/`;
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
