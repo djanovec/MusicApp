@@ -34,7 +34,8 @@
             </mat-form-field>
           </td>
         </tr>
-      </table><button mat-raised-button type="submit" color="primary">Submit</button>
+      </table><button mat-raised-button type="submit" color="primary"><a [routerLink]="['/home']">Submit</a></button>
+      
     </form>
     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
   </mat-card-content>

@@ -10,7 +10,7 @@
         </mat-card-content>
 </mat-card>
 <br>
-<mat-card class="results">
+<mat-card class="results" *ngIf="searchTerm != ''">
 <mat-table class="matTable" [dataSource]="results">
    <ng-container matColumnDef="title">
        <mat-header-cell *matHeaderCellDef>Song Title</mat-header-cell>
