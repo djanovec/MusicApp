@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
+import { SignInComponent } from '../sign-in/sign-in.component';
 
-@Injectable({
+
+  var formObject = [{}]; 
+  @Injectable({
     providedIn: 'root'
-  })
+  })  
 export class RestService {
-    
+ 
 
     constructor(private http: HttpClient) {
         
@@ -23,9 +26,10 @@ export class RestService {
             //   map(this.extractData));
           }
           
-          getUser(id): Observable<any> {
-            return this.http.get('users/userId' + id).pipe(
-              map(this.extractData));
+          addUser(user): Observable<any> {
+            return this.http.post('/users/signup', user)
+            // .pipe(
+              // map(this.extractData));
           }
           
           updateUser (id, user): Observable<any> {

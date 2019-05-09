@@ -6,21 +6,21 @@ function signup(req, res){
     pool.query("SELECT * FROM USERS WHERE email = ?",
     [req.body.email], (err, queryReturn)=>{
         if(queryReturn[0]){
-            return res.send('EMAIL ALREADY EXISTS');
+            return res.send({error:'EMAIL ALREADY EXISTS'});
         }
         let password = bcrypt.hashSync(req.body.password, saltRounds);
         let email = req.body.email;
-        let firstname = req.body.firstname;
-        let lastname = req.body.lastname;
-        
+        let firstname = req.body.firstName;
+        let lastname = req.body.lastName;
+         
 
         pool.query("INSERT INTO users (`firstName`, `lastName`, `email`, `password`) VALUES(?,?,?,?)", 
         [firstname, lastname, email, password], (err, result)=>{
             if(!err){
-                return res.send('Signed Up!');
+                return res.send({message:'Signed Up!'});
             }
             console.log(err);
-            return res.send('Something Broke!');
+            return res.send({error:'Something Broke!'});
         })
     })
 }
@@ -29,7 +29,7 @@ function login(req, res){
     pool.query("SELECT * FROM USERS WHERE email = ?", [req.body.email], (err, result)=>{
         if(result[0]){
             if(bcrypt.compareSync(req.body.password, result[0].password)){
-            return res.send("WELCOME BACK!");
+            return res.send({message: "WELCOME BACK!"});
         }
         else{
             return res.send({error: "Invalid Username or Password!"});

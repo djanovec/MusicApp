@@ -35,7 +35,7 @@ import { AboutComponent } from './about/about.component';
     FooterComponent,
     HeaderComponent,
     UserListComponent,
-    AboutComponent
+    AboutComponent,
     
   ],
   imports: [
