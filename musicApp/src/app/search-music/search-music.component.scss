@@ -1,6 +1,6 @@
 .matCard {
     display: flex;
-    flex-flow: column;
+    flex-flow: column wrap;
     background-color: rgba(42,42,42,0.7);
     justify-content: center;
     align-items: center;
@@ -10,6 +10,11 @@
 
 .matTable {
     background-color: rgba(42,42,42,0.9);
-    width: 77%;
+    width: 90%;
     margin: auto;
+}
+
+.flexRow {
+    display: flex;
+    flex-flow: row wrap;
 }
