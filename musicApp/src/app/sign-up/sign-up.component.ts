@@ -3,7 +3,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService } from '../services/alert.service';
 import { UserService } from '../services/user.service';
@@ -15,35 +15,66 @@ import { UserService } from '../services/user.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-
+//confident the form group items are corrector
 export class SignUpComponent implements OnInit {
+   signUpForm = new FormGroup({
+    'firstName': new FormControl(),
+    'lastName': new FormControl(),
+    'email': new FormControl(),
+    'password': new FormControl(),
+  })
+  
   firstName: string;
   lastName: string;
   email: string;
   password: string;
+  
+  hero: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {    }
 
-  login(){
+  login() {
+    // event.preventDefault();
+    // if(this.signUpForm.valid){
+      // sign-up function
+    }
+    // console.warn(this.signUpForm.value);
     // if(this.email){
     //   localStorage.setItem("user", this.email);
     //   localStorage.setItem("user", this )
     //   this.router.navigate(['/user'+this.email]);
     //   console.log("Huh?")
     // }
+  
+
+  // export class SignUpComponent implements OnInit {
+  //   signUpForm: FormGroup;
+  //   loading = false;
+  //   submitted = false;
+  //   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService,
+  //   private alertService: AlertService) { }
+
+
+
+  ngOnInit(): void {
+    // this.signUpForm = new FormGroup({
+    //   'firstName': new FormControl(this.hero.firstName, [
+    //     Validators.required,
+    //     Validators.minLength(4),
+    //     // forbiddenNameValidator(/bob/i) // <-- Here's how you pass in the custom validator.
+    //   ]),
+    //   'alterEgo': new FormControl(this.hero.alterEgo),
+    //   'power': new FormControl(this.hero.power, Validators.required)
+    // });
+
   }
 
-// export class SignUpComponent implements OnInit {
-//   signUpForm: FormGroup;
-//   loading = false;
-//   submitted = false;
-//   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService,
-//   private alertService: AlertService) { }
- 
-  ngOnInit() {
-    
-  }
-  }
+  get name() { return this.signUpForm.get('firsName'); }
+
+  get power() { return this.signUpForm.get('power'); }
+
+}
+  
   //     this.signUpForm = this.formBuilder.group({
   //       firstName: ['', Validators.required],
   //       lastName: ['', Validators.required],
@@ -81,7 +112,7 @@ export class SignUpComponent implements OnInit {
 
 // import { Component } from '@angular/core';
 // import {Signup} from './signup';
- 
+
 // @Component({
 //   selector: 'app-root',
 //   templateUrl: './signup.component.html',
@@ -91,11 +122,11 @@ export class SignUpComponent implements OnInit {
 //   title = '';
 //   passwordConfirmationFailed = false;
 //   passwordConfirmationTxt = '';
- 
+
 //   signup = new Signup('', '', '', '');
- 
+
 //   countries = ['india', 'canada', 'us'];
- 
+
 //   confirmPassword() {
 //     if (this.signup.password === this.passwordConfirmationTxt) {
 //       this.passwordConfirmationFailed = false;
@@ -103,9 +134,9 @@ export class SignUpComponent implements OnInit {
 //       this.passwordConfirmationFailed = true;
 //     }
 //   }
- 
+
 //   onSubmit() {
 //     console.log('Name: ' + this.signup.name + ', Email: ' + this.signup.email + ', Password: ' + this.signup.password );
 //   }
- 
+
 // }

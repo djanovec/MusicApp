@@ -8,15 +8,28 @@
       <table class="example-full-width" cellspacing="4">
         <tr>
           <td>
-            <mat-form-field class="formField">
-              <input matInput placeholder="FirstName" [(ngModel)]="firstName" name="firstName" required>
+            <mat-form-field class="signUpForm" role="form" (ngSubmit)="login()" [formGroup]="signUpForm" >
+              <input matInput id="name" class="form-control" type="text"  formControlName="firstName" placeholder="FirstName"
+                required>
+              <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                <div *ngIf="name.errors.required">
+                  Name is required.
+                </div>
+                <div *ngIf="name.errors.minlength">
+                  Name must be at least 4 characters long.
+                </div>
+                <!-- <div *ngIf="name.errors.forbiddenName">
+                  Name cannot be Bob. -->
+                <!-- </div> -->
+              </div>
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="LastName" [(ngModel)]="lastName" name="lastName" required>
+              <input matInput placeholder="LastName" [(ngModel)]="lastName" #name="ngModel" name="lastName" required>
             </mat-form-field>
           </td>
         </tr>
@@ -39,7 +52,7 @@
     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="login()" color="primary">Submit</button>
+    <button mat-raised-button type="submit" [disabled]="!signUpForm.valid" (click)="login()" color="primary">Submit</button>
   </mat-card-actions>
 </mat-card>
 
