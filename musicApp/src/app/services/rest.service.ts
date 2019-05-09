@@ -31,6 +31,12 @@ export class RestService {
             // .pipe(
               // map(this.extractData));
           }
+
+          userLogin(loginUser): Observable<any> {
+            return this.http.post('/users/login', loginUser)
+            // .pipe(
+              // map(this.extractData));
+          }
           
           updateUser (id, user): Observable<any> {
             return this.http.put('users/' + id, JSON.stringify(user), httpOptions).pipe(
