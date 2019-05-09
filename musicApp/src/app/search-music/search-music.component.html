@@ -23,10 +23,10 @@
        <mat-cell *matCellDef="let result"><audio controls><source src="{{result.preview}}" /></audio></mat-cell>
    </ng-container>   
    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>   
-   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>    
+   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> 
 </mat-table>
-<mat-paginator class="matTable" [length] = "results.length"
-   [pageSize] = "10"
-   [pageSizeOptions] = "[5, 10, 25, 100]"
-   (page) = "results = $event">
-</mat-paginator>
+<div>Results: {{length}}
+    <button (click)="subIndex(pageIndex)" id="prevButton">Prev</button>
+    Page: {{this.pageIndex + 1}}
+    <button (click)="addIndex(pageIndex)" id="nextButton">Next</button>
+</div>
