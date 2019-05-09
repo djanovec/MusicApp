@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { RestService} from '../services/rest.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import {DataSource, getMultipleValuesInSingleSelectionError} from '@angular/cdk/collections';
@@ -38,7 +38,10 @@ export class UserListComponent implements OnInit {
     });
     // console.log(this.dataSource);
   }
-
+  @HostListener('click', ['$event.target'])
+  onClick(btn) {
+    console.log('button', btn, 'number of clicks:');
+ }
 
   delete(id) {
     this.rest.deleteUser(id)
