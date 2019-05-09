@@ -11,7 +11,7 @@ app.use(express.static(__dirname+"/dist"));
 app.use('/users', userRoutes);
 
 app.get('/', (req, res)=>{
-    res.send('Hello World');
+    res.sendFile(__dirname+"/dist/index.html");
 })
 
 app.get('/*', (req, res)=>{
