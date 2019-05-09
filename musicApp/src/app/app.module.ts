@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserListComponent } from './user-list/user-list.component';
     HeaderComponent,
     FooterComponent,
     HeaderComponent,
-    UserListComponent
+    UserListComponent,
+    AboutComponent
     
   ],
   imports: [
