@@ -15,46 +15,67 @@ import { UserService } from '../services/user.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
+
 export class SignUpComponent implements OnInit {
-  signUpForm: FormGroup;
-  loading = false;
-  submitted = false;
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService,
-  private alertService: AlertService) { }
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+
+  constructor(private router: Router) { }
+
+  login(){
+    // if(this.email){
+    //   localStorage.setItem("user", this.email);
+    //   localStorage.setItem("user", this )
+    //   this.router.navigate(['/user'+this.email]);
+    //   console.log("Huh?")
+    // }
+  }
+
+// export class SignUpComponent implements OnInit {
+//   signUpForm: FormGroup;
+//   loading = false;
+//   submitted = false;
+//   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService,
+//   private alertService: AlertService) { }
  
   ngOnInit() {
-      this.signUpForm = this.formBuilder.group({
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        email: ['', Validators.required],
-        password: ['', [Validators.required, Validators.minLength(6)]]
-      });
+    
   }
-  // convenience getter for easy access to form fields
-  get f() { return this.signUpForm.controls; }
-
-  onSubmit() {
-      this.submitted = true;
-
-      // stop here if form is invalid
-      if (this.signUpForm.invalid) {
-          return;
-      }
-
-      this.loading = true;
-      this.userService.register(this.signUpForm.value)
-          .pipe(first())
-          .subscribe(
-              data => {
-                  this.alertService.success('Registration successful', true);
-                  this.router.navigate(['/login']);
-              },
-              error => {
-                  this.alertService.error(error);
-                  this.loading = false;
-              });
   }
-}
+  //     this.signUpForm = this.formBuilder.group({
+  //       firstName: ['', Validators.required],
+  //       lastName: ['', Validators.required],
+  //       email: ['', Validators.required],
+  //       password: ['', [Validators.required, Validators.minLength(6)]]
+  //     });
+  // }
+  // // convenience getter for easy access to form fields
+  // get f() { return this.signUpForm.controls; }
+
+//   onSubmit() {
+//       this.submitted = true;
+
+//       // stop here if form is invalid
+//       if (this.signUpForm.invalid) {
+//           return;
+//       }
+
+//       this.loading = true;
+//       this.userService.register(this.signUpForm.value)
+//           .pipe(first())
+//           .subscribe(
+//               data => {
+//                   this.alertService.success('Registration successful', true);
+//                   this.router.navigate(['/login']);
+//               },
+//               error => {
+//                   this.alertService.error(error);
+//                   this.loading = false;
+//               });
+//   }
+// }
 
 // version 2
 
