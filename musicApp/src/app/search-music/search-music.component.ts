@@ -14,7 +14,7 @@ export class SearchMusicComponent implements OnInit {
   inputElement: any;
   displayedColumns: string[] = ['title', 'artist', 'preview'];
   pageSize = 25;
-  length = 1;
+  length: number;
   searchTerm = '';
   apiIndex = 0;
   pageIndex = 0;
@@ -23,12 +23,13 @@ export class SearchMusicComponent implements OnInit {
   prevButton = document.getElementById("prevButton");
 constructor(private musicService: MusicService) {}
 addIndex(pageIndex) {
-  if (pageIndex < this.length) {
+  if (this.pageIndex < ((this.length / 25) - 1)) {
     this.indexItterator.push({pageIndex});
     this.apiIndex = this.indexItterator.length * 25;
-    pageIndex ++;
+    this.pageIndex = pageIndex + 1;
     pageIndex = this.pageIndex;
-    console.log(this.apiIndex);
+    console.log(this.length);
+    console.log(this.pageIndex);
   }
   else {
     console.log("didn't work");
@@ -36,7 +37,6 @@ addIndex(pageIndex) {
   this.musicService.getResults(this.searchTerm, this.apiIndex).subscribe(res => {
     this.results = res['data'];
     this.length = res['total'];
-    console.log(this.searchTerm);
     console.log(this.apiIndex);
   });
 }
@@ -44,9 +44,8 @@ subIndex(pageIndex) {
   if (pageIndex > 0) {
     this.indexItterator.pop();
     this.apiIndex = this.indexItterator.length * 25;
-    pageIndex --;
-    pageIndex = this.pageIndex;
-    console.log(this.apiIndex);
+    this.pageIndex = this.pageIndex - 1;
+    console.log(this.pageIndex);
       }
       else {
         console.log("didn't work");
@@ -54,7 +53,6 @@ subIndex(pageIndex) {
   this.musicService.getResults(this.searchTerm, this.apiIndex).subscribe(res => {
     this.results = res['data'];
     this.length = res['total'];
-    console.log(this.searchTerm);
     console.log(this.apiIndex);
   });
 }
