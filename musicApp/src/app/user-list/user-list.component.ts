@@ -46,7 +46,7 @@ export class UserListComponent implements OnInit {
   delete(id) {
     this.rest.deleteUser(id)
       .subscribe(res => {
-          this.getUsers();
+          this.deleteUser();
         }, (err) => {
           console.log(err);
         }

@@ -48,6 +48,18 @@ function getAll(req, res){
     })
 }
 
+function deleteUser(req, res){
+    pool.query("DELETE FROM users WHERE id = ?", [req.body.id], (err, result) =>{
+        if(!err){
+            console.log("deleted user")
+        }
+        else{
+            console.log("something went wrong")
+        }
+    })
+}
+
 module.exports.signup = signup;
 module.exports.login = login;
 module.exports.getAll = getAll;
+module.exports.deleteUser = deleteUser;
