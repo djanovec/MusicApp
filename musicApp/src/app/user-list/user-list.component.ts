@@ -13,7 +13,7 @@ export class UserListComponent implements OnInit {
   users:Array<Object>;
   usersString: string = "";
   dataSource = this.usersString;
-  displayedColumns: string[] = ['ID', 'Name', 'Username' , 'Email']
+  displayedColumns: string[] = ['Delete','ID', 'Name', 'Username' , 'Email']
  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   length = 100;
