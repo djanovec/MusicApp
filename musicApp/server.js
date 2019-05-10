@@ -8,14 +8,11 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname+"/dist/musicApp"));
 
-
-
 app.use('/users', userRoutes);
 
 app.get('/', (req, res)=>{
     res.sendFile(__dirname+"/dist/musicApp/index.html");
 })
-
 
 app.get('/*', (req, res)=>{
     res.redirect('back');
