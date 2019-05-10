@@ -14,6 +14,11 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   loading = false;
   submitted = false;
+  firstName: string;
+  lastName: string;
+  username: string;
+  password: string;
+  email: string;
   public user = {};
   public value = '';
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService,

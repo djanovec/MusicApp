@@ -14,6 +14,9 @@ export class SignInComponent implements OnInit {
   public loginUser = {};
   public value = '';
   signInForm: FormGroup;
+  username: string;
+  password: string;
+  email: string;
 
   constructor(private router: Router, private restService: RestService, private formBuilder: FormBuilder) { }
 
