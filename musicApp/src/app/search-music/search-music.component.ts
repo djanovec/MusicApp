@@ -28,16 +28,12 @@ addIndex(pageIndex) {
     this.apiIndex = this.indexItterator.length * 25;
     this.pageIndex = pageIndex + 1;
     pageIndex = this.pageIndex;
-    console.log(this.length);
-    console.log(this.pageIndex);
   }
   else {
-    console.log("didn't work");
   }
   this.musicService.getResults(this.searchTerm, this.apiIndex).subscribe(res => {
     this.results = res['data'];
     this.length = res['total'];
-    console.log(this.apiIndex);
   });
 }
 subIndex(pageIndex) {
@@ -45,15 +41,12 @@ subIndex(pageIndex) {
     this.indexItterator.pop();
     this.apiIndex = this.indexItterator.length * 25;
     this.pageIndex = this.pageIndex - 1;
-    console.log(this.pageIndex);
       }
       else {
-        console.log("didn't work");
       }
   this.musicService.getResults(this.searchTerm, this.apiIndex).subscribe(res => {
     this.results = res['data'];
     this.length = res['total'];
-    console.log(this.apiIndex);
   });
 }
 
