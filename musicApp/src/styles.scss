@@ -13,4 +13,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 body {
     background: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-769415.jpg)fixed;
     background-size: cover;
+
+
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
