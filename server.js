@@ -18,4 +18,4 @@ app.get('/*', (req, res)=>{
     res.redirect('back');
 })
 
-app.listen(PORT, console.log(`Listening on Port: ${PORT}`));
+app.listen(process.env.PORT || PORT, console.log(`Listening on Port: ${PORT}`));
